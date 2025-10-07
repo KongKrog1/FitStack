@@ -8,13 +8,15 @@ services:
       - "8081:8081"
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
-      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=FitnessAppDB;User Id=sa;Password=FitnessRules123!;TrustServerCertificate=True;
+      - ConnectionStrings__DefaultConnection=Server=${DB__Server},${DB__Port};Database=${DB__Name};User Id=${DB__User};Password=${DB__Password};TrustServerCertificate=True;
 
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      SA_PASSWORD: "FitnessRules123!"
+      SA_PASSWORD: "${DB__Password}"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
