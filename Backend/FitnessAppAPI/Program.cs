@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using FitnessAppAPI.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
